@@ -19,8 +19,8 @@
   </ul>
   <h2>Tecnologias Utilizadas</h2>
   <ul>
-    <li>PHP 7</li> <br>
-    <li>Laravel 8</li> <br>
+    <li>PHP </li> <br>
+    <li>Laravel </li> <br>
     <li>MySQL</li> <br> 
     <li>HTML</li> <br>
     <li>CSS</li> <br>
