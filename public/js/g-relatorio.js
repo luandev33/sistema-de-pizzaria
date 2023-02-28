@@ -104,19 +104,5 @@ document.getElementById('btn-calcular').addEventListener('click', function() {
         circle1.style.strokeDashoffset = 440 - (440 * number1) / 100;
  
 
-
-
-
-    console.log('o valor Total Faturado do dia é:', soma);
-    console.log('A quantidade de pedidos total do dia é:', qtdValores);
-    console.log('A quantidade de pedids pagos em dinheiro foi de:', qtdDinheiro);
-    console.log('A quantidade de pedidos pagos com Cartão foi de:', qtdCartao);
-    console.log('Valor total dos pedidos pagos em Dinheiro:', valorDinheiro);
-    console.log('Valor total dos pedidos pagos em Cartão:', valorCartao);
-    console.log('A quantidade de pedidos Que foram entregas é de:', qtdentrega);
-    console.log('Quantidade de pedidos que foram retirados no local é de:', qtdretirada);
-    console.log('A porcentagem dos valores em dinheiro é:', porcentagemDinheiro, '%');
-    console.log('A porcentagem dos valores em cartão é:', porcentagemCartao, '%');
-
   });
   

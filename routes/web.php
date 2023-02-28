@@ -12,6 +12,7 @@ Route::prefix('pedidos')->group(function(){
     Route::post('/excluir-todos', [PizzaController::class, 'deleteAll'])->name('excluir-todos');
     Route::get('/pizzaiolos', [PizzaController::class, 'pizzaiolos'])->name('pedidos-pizzaiolos');
     Route::get('/relatorio', [PizzaController::class, 'relatorio'])->name('pedidos-relatorio');
+    Route::get('/historico', [PizzaController::class, 'historico'])->name('pedidos-historico');
 });
 
 

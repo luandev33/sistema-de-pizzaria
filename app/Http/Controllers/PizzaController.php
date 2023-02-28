@@ -8,6 +8,8 @@ use App\Models\Pedido;
 
 use App\Models\Pedidodia;
 
+use App\Models\Historico;
+
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Session;
@@ -40,6 +42,13 @@ class PizzaController extends Controller
        return view('pizzas.pedia' , ['pedidodias' =>$pedidodias]);
     }
 
+    public function historico(){
+
+        $historicos = Historico::all();
+
+       return view('pizzas.historico' , ['historicos' =>$historicos]);
+    }
+
 
 
 
@@ -58,6 +67,8 @@ class PizzaController extends Controller
         Pedido::create($request->all());
 
         Pedidodia::create($request->all());
+
+        Historico::create($request->all());
 
   return redirect()->route('pedidos-create');
 
