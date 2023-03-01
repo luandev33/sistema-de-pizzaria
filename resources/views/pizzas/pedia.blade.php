@@ -7,6 +7,7 @@
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('css/relatoriodia.css') }}">
+<link rel="stylesheet" href="{{ asset('css/modal.css') }}">
 
 
 
@@ -87,7 +88,18 @@
 
             <form action="{{ route('excluir-todos') }}" method="post">
              @csrf
-           <button type="submit" class="btn btn-danger float-right">Finalizar Dia</button>
+             <a href="#finalizar-dia" class="btn btn-danger float-right">Finalizar Dia</a>
+             <div id="finalizar-dia" class="modalDialog">
+                  <div>
+                      <h2>ATEÇÃO</h2>
+                      <p>Tem certeza de que deseja finalizar o dia?</p>
+                      <p>Caso ainda não tenha salvo o relatório tenha em mente de que não será possível recuperá-lo.</p>
+                      <div class="can-seg d-flex">
+                      <a href="#close" title="Close" class="btn btn-danger ">Cancelar!</a>
+                      <button type="submit" class="btn btn-primary seguir">Sim, finalizar dia</button>
+                  </div>
+                  </div>
+    </div>
             </form>
             
         </div>

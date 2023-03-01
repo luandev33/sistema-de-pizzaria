@@ -107,6 +107,8 @@ class PizzaController extends Controller
                 'sabor' => $request->sabor,
                 'borda' => $request->borda,
                 'hora' => $request->hora,
+                'dincar' => $request->dincar,
+                'entrtegaretirada' => $request->entrtegaretirada,
                 'valor' => $request->valor,
 
 
@@ -114,6 +116,7 @@ class PizzaController extends Controller
 
            Pedido::where('id', $id)->update($data);
            Pedidodia::where('id', $id)->update($data);
+           Historico::where('id', $id)->update($data);
 
            return redirect()->route('pedidos-index');
 
@@ -150,8 +153,8 @@ class PizzaController extends Controller
 
           public function deleteAll()
           {
-              DB::table('pedidodias')->truncate();
-              DB::table('pedidos')->truncate();
+              DB::table('pedidodias')->delete();
+              DB::table('pedidos')->delete();
               return redirect()->route('pedidos-relatorio');
           }
 

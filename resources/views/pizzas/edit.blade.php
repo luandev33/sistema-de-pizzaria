@@ -40,6 +40,20 @@
                 </div>
 
                 <br>
+
+                <div class="form-group">
+                    <label for="dincar">Dinheiro ou Cartão:</label>
+                    <input type="text" name="dincar" class="form-control" value=" {{ $pedidos->dincar }}" placeholder="Dinheiro ou Cartão" >
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="entrtegaretirada">Entrega ou Retirada:</label>
+                    <input type="text" name="entrtegaretirada" id="time" class="form-control" value=" {{ $pedidos->entrtegaretirada }}" placeholder="Entrega ou Retirada" >
+                </div>
+
+                <br>
                 
                 <div class="form-group">
                     <label for="valor">Valor Total:</label>
