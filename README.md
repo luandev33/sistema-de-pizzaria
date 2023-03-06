@@ -37,4 +37,4 @@
     <li>Acesse a aplicação no navegador em http://localhost:8000/.</li> <br>
   </ol>
   <h2>Conclusão</h2>
-  <p>Este é um projeto simples, mas eficaz para gerenciamento de pedidos em uma pizzaria. obviamente esta versão é bem simplista e ainda falta muita coisa, e alguns ajustes de css, sinta-se a vontade para fazer as alteraçoes ou pivotar! </p>
+  <p>Este é um projeto simples, mas eficaz para gerenciamento de pedidos em uma pizzaria. obviamente esta versão é bem simplista e ainda falta muita coisa, e alguns ajustes de css, sinta-se a vontade para fazer as alteraçoes ou pivotar!     </p>

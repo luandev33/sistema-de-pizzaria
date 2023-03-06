@@ -10,6 +10,8 @@ use App\Models\Pedidodia;
 
 use App\Models\Historico;
 
+use DateTime;
+
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Session;
@@ -20,49 +22,41 @@ use Illuminate\Support\Facades\Session;
 class PizzaController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         $pedidos = Pedido::all();
 
-       return view('pizzas.index' , ['pedidos' =>$pedidos]);
+        return view('pizzas.index', ['pedidos' => $pedidos]);
     }
 
 
 
-    public function pizzaiolos(){
+    public function pizzaiolos()
+    {
 
         $pedidos = Pedido::all();
 
-       return view('pizzas.pizzaiolos' , ['pedidos' =>$pedidos]);
+        return view('pizzas.pizzaiolos', ['pedidos' => $pedidos]);
     }
 
-    public function relatorio(){
+    public function relatorio()
+    {
 
         $pedidodias = Pedidodia::all();
 
-       return view('pizzas.pedia' , ['pedidodias' =>$pedidodias]);
+        return view('pizzas.pedia', ['pedidodias' => $pedidodias]);
     }
 
-    public function historico(){
+    public function create()
+    {
 
-        $historicos = Historico::all();
-
-       return view('pizzas.historico' , ['historicos' =>$historicos]);
-    }
-
-
-
-
-
-    public function create(){
         return view('pizzas.create');
     }
 
 
 
-
-
-    public function store(Request $request){
-
+    public function store(Request $request)
+    {
 
         Pedido::create($request->all());
 
@@ -70,7 +64,7 @@ class PizzaController extends Controller
 
         Historico::create($request->all());
 
-  return redirect()->route('pedidos-create');
+        return redirect()->route('pedidos-create');
 
     }
 
@@ -79,84 +73,127 @@ class PizzaController extends Controller
 
 
 
-    public function edit($id) {
+    public function edit($id)
+    {
 
-        $pedidos =  Pedido::where('id', $id)->first();
+        $pedidos = Pedido::where('id', $id)->first();
 
         if (!empty($pedidos)) {
 
-            return view('pizzas.edit' , ['pedidos' =>$pedidos]);
+            return view('pizzas.edit', ['pedidos' => $pedidos]);
 
         } else {
 
             return redirect()->route('pedidos-create');
 
         }
-      }
+    }
 
 
 
 
 
 
-        public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
 
-           $data = [
+        $data = [
 
-                'nome' => $request->nome,
-                'sabor' => $request->sabor,
-                'borda' => $request->borda,
-                'hora' => $request->hora,
-                'dincar' => $request->dincar,
-                'entrtegaretirada' => $request->entrtegaretirada,
-                'valor' => $request->valor,
-
-
-           ];
-
-           Pedido::where('id', $id)->update($data);
-           Pedidodia::where('id', $id)->update($data);
-           Historico::where('id', $id)->update($data);
-
-           return redirect()->route('pedidos-index');
-
-         }
+            'nome' => $request->nome,
+            'sabor' => $request->sabor,
+            'borda' => $request->borda,
+            'hora' => $request->hora,
+            'dincar' => $request->dincar,
+            'entrtegaretirada' => $request->entrtegaretirada,
+            'valor' => $request->valor,
 
 
+        ];
 
+        Pedido::where('id', $id)->update($data);
+        Pedidodia::where('id', $id)->update($data);
+        Historico::where('id', $id)->update($data);
+
+        return redirect()->route('pedidos-index');
+
+    }
 
 
 
-         public function destroy($id, $page){
-           
-
-              if ($page == 1) {
-                    
-                Pedido::where('id', $id)->delete();
-                 return redirect()->route('pedidos-index');
-                
 
 
-             }  elseif ($page == 2){
 
-                  Pedido::where('id', $id)->delete();
-                 return redirect()->route('pedidos-pizzaiolos');
-                    
-                
+    public function destroy($id, $page)
+    {
 
-             } elseif ($page == 3) {
-                    Pedidodia::where('id', $id)->delete();
-                 return redirect()->route('pedidos-relatorio');
-                }
 
-          }
+        if ($page == 1) {
 
-          public function deleteAll()
-          {
-              DB::table('pedidodias')->delete();
-              DB::table('pedidos')->delete();
-              return redirect()->route('pedidos-relatorio');
-          }
+            Pedido::where('id', $id)->delete();
+            return redirect()->route('pedidos-index');
 
-        
+
+
+        } elseif ($page == 2) {
+
+            Pedido::where('id', $id)->delete();
+            return redirect()->route('pedidos-pizzaiolos');
+
+
+
+        } elseif ($page == 3) {
+            Pedidodia::where('id', $id)->delete();
+            return redirect()->route('pedidos-relatorio');
+        }
+
+    }
+
+    public function deleteAll()
+    {
+        DB::table('pedidodias')->delete();
+        DB::table('pedidos')->delete();
+        return redirect()->route('pedidos-relatorio');
+    }
+
+
+
+    public function historico(Request $request)
+    {
+
+        $search = $request->input('search');
+
+
+        if ($search) {
+
+            // Verifica se a pesquisa é uma data válida no formato d/m/Y
+            $date = DateTime::createFromFormat('d/m/Y', $search);
+            if ($date !== false) {
+                // Pesquisa por data
+
+                $historicos = Historico::whereDate('created_at', $date->format('Y-m-d'))
+                    ->orderByDesc('created_at')
+                    ->get();
+            } else {
+                // Pesquisa por nome
+
+                $historicos = Historico::where('nome', 'like', '%' . $search . '%')
+                    ->orderByDesc('created_at')
+                    ->get();
+            }
+
+        } else {
+            // Retorna todos os registros
+
+            $historicos = Historico::orderByDesc('created_at')->get();
+        }
+
+        return view('pizzas.historico', ['historicos' => $historicos, 'search' => $search]);
+
+
+    }
+
+
+
+
+
 }

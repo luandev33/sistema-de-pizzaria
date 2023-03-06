@@ -96,7 +96,7 @@
                       <p>Caso ainda não tenha salvo o relatório tenha em mente de que não será possível recuperá-lo.</p>
                       <div class="can-seg d-flex">
                       <a href="#close" title="Close" class="btn btn-danger ">Cancelar!</a>
-                      <button type="submit" class="btn btn-primary seguir">Sim, finalizar dia</button>
+                      <button type="submit" class="btn btn-success seguir">Sim, finalizar dia</button>
                   </div>
                   </div>
     </div>

@@ -6,6 +6,7 @@
 
 @section('content')
 
+
        <div class="container mt-5">
         <h1>Lançar um pedido</h1>
         <hr>
@@ -14,47 +15,47 @@
             <div class="form-group">
                 <div class="form-group">
                     <label for="nome">Nome:</label>
-                    <input type="text" name="nome" class="form-control" placeholder="Nome Do Cliente" >
+                    <input type="text" name="nome" class="form-control" placeholder="Nome Do Cliente" required>
                 </div>
 
                 <br>
 
                 <div class="form-group">
                     <label for="sabor">Sabor Da Pizza:</label>
-                    <input type="text" name="sabor" class="form-control" placeholder="ex:Mussarela/Calabresa" >
+                    <input type="text" name="sabor" class="form-control" placeholder="ex:Mussarela/Calabresa" required>
                 </div>
 
                 <br>
                 
                 <div class="form-group">
                     <label for="borda">Borda:</label>
-                    <input type="text" name="borda" class="form-control" placeholder="ex:Catupiry" >
+                    <input type="text" name="borda" class="form-control" placeholder="ex:Catupiry" required>
                 </div>
 
                 <br>
                 <div class="form-group">
                     <label for="hora">Horario:</label>
-                    <input type="text" name="hora" id="time" class="form-control" placeholder="prenchimento automatico" >
+                    <input type="text" name="hora" id="time" class="form-control" placeholder="preenchimento automático" required>
                 </div>
 
                 <br>
 
                 <div class="form-group">
                     <label for="dincar">Dinheiro ou Cartão:</label>
-                    <input type="text" name="dincar" class="form-control" placeholder="Dinheiro ou Cartão" >
+                    <input type="text" name="dincar" class="form-control" placeholder="Dinheiro ou Cartão" required>
                 </div>
 
                 <br>
 
                 <div class="form-group">
                     <label for="entrtegaretirada">Entrega ou Retirada:</label>
-                    <input type="text" name="entrtegaretirada" id="time" class="form-control" placeholder="Entrega ou Retirada" >
+                    <input type="text" name="entrtegaretirada" id="time" class="form-control" placeholder="Entrega ou Retirada" required>
                 </div>
 
                 <br>
                 <div class="form-group">
                     <label for="valor">Valor Total:</label>
-                    <input type="text" name="valor" class="form-control" placeholder="ex:R$:00.00 obs:usar ponto ao inves de virgula" >
+                    <input type="text" name="valor" class="form-control" placeholder="ex:R$:00.00 obs:usar ponto ao inves de virgula" required>
                 </div>
 
                 <br>
@@ -71,8 +72,6 @@
 </div>
         </form>
        </div>
-
-                
 
 
 @endsection
